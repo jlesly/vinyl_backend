@@ -1,11 +1,12 @@
-class Api::V1::VinylsController < ApplicationController
+class VinylsController < ApplicationController
+    
     def index
-        vinyls = Vinyl.all
-        render json: VinylSerializer.new(vinyls)
+        vinyls = category.vinyls
+        render json: vinyls
     end 
 
     def create
-        vinyl= Vinyl.create(vinyl_params)
+        vinyl= Vinyl.new(vinyl_params)
         if vinyl.save
             render json: vinyl, status: :accepted
         else
@@ -38,4 +39,8 @@ class Api::V1::VinylsController < ApplicationController
     def set_vinyl
         vinyl= Vinyl.find(params[:id])
     end 
+
+    def set_category
+        category = Category.find(params[:category_id])
+    end
 end

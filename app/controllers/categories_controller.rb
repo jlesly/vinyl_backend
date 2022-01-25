@@ -1,11 +1,12 @@
-class Api::V1::CategoriesController < ApplicationController
+class CategoriesController < ApplicationController
+    
     def index
         categories = Category.all
-        render json: CategorySerializer.new(categories)
+        render json: categories
     end 
 
     def create
-        category = Category.create(category_params)
+        category = Category.new(category_params)
 
         if category.save
            render json: category, status: :accepted

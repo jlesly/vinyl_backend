@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  namespace :api do
-    namespace :v1 do
-      resources :categories
-      resources :vinyls
-    end
-  end
+  root 'categories#index'
+      
+      resources :categories do 
+        resources :vinyls, only: [:index]
+      end
 
+      resources :vinyls, only: [:create, :show]
 
 end
