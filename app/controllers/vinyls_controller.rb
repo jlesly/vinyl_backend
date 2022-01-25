@@ -1,4 +1,6 @@
 class VinylsController < ApplicationController
+    before_action :set_vinyl, only: [:show]
+    before_action :set_category, only: [:index]
     
     def index
         vinyls = category.vinyls
