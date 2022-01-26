@@ -23,11 +23,9 @@ ActiveRecord::Schema.define(version: 2022_01_24_205007) do
     t.string "album"
     t.integer "year"
     t.string "image_url"
-    t.integer "category_id", null: false
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_vinyls_on_category_id"
   end
 
-  add_foreign_key "vinyls", "categories"
 end

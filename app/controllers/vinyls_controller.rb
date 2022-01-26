@@ -1,7 +1,7 @@
 class VinylsController < ApplicationController
     before_action :set_vinyl, only: [:show]
     before_action :set_category, only: [:index]
-    
+
     def index
         vinyls = category.vinyls
         render json: vinyls
@@ -35,7 +35,7 @@ class VinylsController < ApplicationController
 
     private
     def vinyl_params
-        params.require(:vinyl).permit(:artist, :album, :year, :image_url, :id, :category_name, :category_id)
+        params.require(:vinyl).permit(:artist, :album, :year, :image_url, :category_id)
     end
 
     def set_vinyl
