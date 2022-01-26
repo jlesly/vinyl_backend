@@ -3,40 +3,40 @@ class CategoriesController < ApplicationController
 
 
     def index
-        categories = Category.all
-        render json: categories
+        @categories = Category.all
+        render json: @categories
     end 
 
     def create
-        category = Category.new(category_params)
+        @category = Category.new(category_params)
 
-        if category.save
-           render json: category, status: :accepted
+        if @category.save
+           render json: @category, status: :accepted
        else
-           render json: {errors: category.errors.full_messages}, status: :unprocessable_entity
+           render json: {errors: @category.errors.full_messages}, status: :unprocessable_entity
        end
     end 
 
     def show
-        render json: category
+        render json: @category
     end
 
     def update
-        if category.update(category_params)
-            render json: category
+        if @category.update(category_params)
+            render json: @category
         else
-            render json: {errors: category.errors.full_messages}, status: :unprocessable_entity
+            render json: {errors: @category.errors.full_messages}, status: :unprocessable_entity
         end
     end 
 
     def destroy
-        category.destroy    
+        @category.destroy    
     end 
 
     private
 
     def set_category
-        category= Category.find(params[:id])
+        @category= Category.find(params[:id])
     end 
 
     def category_params
