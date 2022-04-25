@@ -6,6 +6,6 @@ Rails.application.routes.draw do
         resources :vinyls, only: [:index]
       end
 
-      resources :vinyls, only: [:create, :show]
+      resources :vinyls
 
 end

@@ -29,8 +29,10 @@ class VinylsController < ApplicationController
     end 
 
     def destroy
+        vinyl = Vinyl.find(params[:id])
+        category = Category.find(vinyl.category_id)
         vinyl.destroy
-        render json: vinyl
+        render json: @category
     end 
 
     private
